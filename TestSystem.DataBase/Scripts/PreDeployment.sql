@@ -9,3 +9,5 @@
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+
+IF EXISTS(SELECT 1 FROM sys.tables WHERE name = 't_example') TRUNCATE TABLE t_example
