@@ -11,3 +11,6 @@
 */
 
 IF EXISTS(SELECT 1 FROM sys.tables WHERE name = 't_example') TRUNCATE TABLE t_example
+IF EXISTS(SELECT 1 FROM sys.tables WHERE name = 't_account') TRUNCATE TABLE t_account
+IF EXISTS(SELECT 1 FROM sys.tables WHERE name = 't_accountLevel') TRUNCATE TABLE t_accountLevel
+IF EXISTS(SELECT 1 FROM sys.tables WHERE name = 't_loginRecord') TRUNCATE TABLE t_loginRecord
