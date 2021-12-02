@@ -8,4 +8,4 @@ bin
 packages
 *.user
 *.jfm
-*..dbmdl
+*.dbmdl
