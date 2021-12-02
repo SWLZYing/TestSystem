@@ -7,5 +7,6 @@
 	[f_lastLoginTime] DATETIME			NOT NULL,
 	[f_createTime] DATETIME				NOT NULL,
 	[f_updateTime] DATETIME				NOT NULL,
-	CONSTRAINT [PK_account] PRIMARY KEY CLUSTERED ([f_id] ASC)
+	CONSTRAINT [PK_account] PRIMARY KEY CLUSTERED ([f_id] ASC),
+	CONSTRAINT [UK_account] UNIQUE([f_account])
 )

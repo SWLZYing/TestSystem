@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace TestSystem.Webapi.Models.Tables
+namespace TestSystem.Persistent.Model
 {
-    public class T_Account
+    public class Account
     {
         public int f_id { get; set; }
 
@@ -17,5 +17,10 @@ namespace TestSystem.Webapi.Models.Tables
         public DateTime f_createTime { get; set; }
 
         public DateTime f_updateTime { get; set; }
+
+        public override string ToString()
+        {
+            return $"{nameof(f_account)}:{f_account},{nameof(f_nickname)}:{f_nickname},{nameof(f_lastLoginTime)}:{f_lastLoginTime}";
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace TestSystem.Persistent.Tests.Repository
     using Dapper;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using TestSystem.Persistent.Repository;
+    using TestSystem.Persistent.Repository.Interface;
 
     [TestClass]
     public class ExampleRepositoryTests

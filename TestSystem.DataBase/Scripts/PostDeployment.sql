@@ -13,3 +13,9 @@
 INSERT INTO t_example (f_content) 
 VALUES    ('TEST001')
         , ('TEST002')
+
+INSERT INTO t_account (f_account, f_password, f_nickname, f_lastLoginTime, f_createTime, f_updateTime)
+VALUES ('USER001', '', 'User001', GETDATE(), GETDATE(), GETDATE())
+
+INSERT INTO t_accountLevel (f_accountId, f_level, f_createTime, f_updateTime)
+VALUES (1, 1, GETDATE(), GETDATE())

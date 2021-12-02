@@ -72,6 +72,10 @@
     <Build Include="dbo\Tables\t_account.sql" />
     <Build Include="dbo\Tables\t_accountLevel.sql" />
     <Build Include="dbo\Tables\t_loginRecord.sql" />
+    <Build Include="dbo\Stored Procedures\pro_getAccount.sql" />
+    <Build Include="dbo\Stored Procedures\pro_updateAccount.sql" />
+    <Build Include="dbo\Stored Procedures\pro_setAccount.sql" />
+    <Build Include="dbo\Stored Procedures\pro_resetAccount.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\PostDeployment.sql" />

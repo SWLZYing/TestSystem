@@ -118,10 +118,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Tables\T_Account.cs" />
-    <Compile Include="Models\Tables\T_AccountLevel.cs" />
-    <Compile Include="Models\Tables\T_LoginRecord.cs" />
-    <Compile Include="Models\TestSystemContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

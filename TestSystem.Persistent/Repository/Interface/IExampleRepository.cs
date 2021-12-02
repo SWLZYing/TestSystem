@@ -1,5 +1,5 @@
 ﻿
-namespace TestSystem.Persistent.Repository
+namespace TestSystem.Persistent.Repository.Interface
 {
     using System;
     using System.Collections.Generic;

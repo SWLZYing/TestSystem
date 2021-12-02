@@ -7,6 +7,7 @@ namespace TestSystem.Persistent.Repository
     using System.Data.SqlClient;
     using Dapper;
     using TestSystem.Persistent.Model;
+    using TestSystem.Persistent.Repository.Interface;
 
     public class ExampleRepository : IExampleRepository
     {
