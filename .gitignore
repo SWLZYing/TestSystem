@@ -7,3 +7,5 @@ obj
 bin
 packages
 *.user
+*.jfm
+*..dbmdl
