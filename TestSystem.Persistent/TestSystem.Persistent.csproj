@@ -50,7 +50,9 @@
     <Compile Include="Model\LoginRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
+    <Compile Include="Repository\SignRepository.cs" />
     <Compile Include="Repository\ExampleRepository.cs" />
+    <Compile Include="Repository\Interface\ISignRepository.cs" />
     <Compile Include="Repository\Interface\IAccountRepository.cs" />
     <Compile Include="Repository\Interface\IExampleRepository.cs" />
   </ItemGroup>

@@ -76,6 +76,7 @@
     <Build Include="dbo\Stored Procedures\pro_updateAccount.sql" />
     <Build Include="dbo\Stored Procedures\pro_setAccount.sql" />
     <Build Include="dbo\Stored Procedures\pro_resetAccount.sql" />
+    <Build Include="dbo\Stored Procedures\pro_signIn.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\PostDeployment.sql" />

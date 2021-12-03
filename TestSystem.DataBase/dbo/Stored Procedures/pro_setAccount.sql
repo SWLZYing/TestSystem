@@ -1,8 +1,9 @@
 ﻿/*
-	描述: 更新使用者帳號(Account)
+	描述: 建立使用者帳號(Account)
 	建立日期: 2021-12-02
 
-	exec pro_setAccount 'USER001', 'PWD001', 'User001'
+	exec pro_setAccount 
+		@acc = 'USER001', @pwd = 'PWD001', @nickname = 'User001'
 */
 
 CREATE PROCEDURE [dbo].[pro_setAccount]

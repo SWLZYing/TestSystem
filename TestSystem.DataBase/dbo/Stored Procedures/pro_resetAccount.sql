@@ -1,8 +1,9 @@
 ﻿/*
-	描述: 更新使用者帳號(Account)
+	描述: 更新使用者密碼(Account)
 	建立日期: 2021-12-02
 
-	exec pro_resetAccount 1, 'ResetPWD001'
+	exec pro_resetAccount 
+		@id = 1, @pwd = 'ResetPWD001'
 */
 
 CREATE PROCEDURE [dbo].[pro_resetAccount]

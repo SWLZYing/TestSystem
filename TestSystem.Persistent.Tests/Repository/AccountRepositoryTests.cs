@@ -24,7 +24,11 @@ namespace TestSystem.Persistent.Tests.Repository
                 string sqlStr = @"TRUNCATE TABLE t_account
                                   TRUNCATE TABLE t_accountLevel
 
-                                  EXEC pro_setAccount 'USER001', 'PWD001', 'User001'";
+                                  INSERT INTO t_account (f_account, f_password, f_nickname, f_lastLoginTime, f_createTime, f_updateTime)
+                                  VALUES ('USER001', 'PWD001', 'User001', GETDATE(), GETDATE(), GETDATE())
+
+                                  INSERT INTO t_accountLevel (f_accountId, f_level, f_createTime, f_updateTime)
+                                  VALUES (1, 1, GETDATE(), GETDATE())";
                 cn.Execute(sqlStr);
             }
 

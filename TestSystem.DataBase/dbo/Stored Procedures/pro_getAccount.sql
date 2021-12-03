@@ -2,7 +2,8 @@
 	描述: 取得使用者帳號(Account)
 	建立日期: 2021-12-02
 
-	exec pro_getAccount 1
+	exec pro_getAccount 
+		@id = 1
 */
 
 CREATE PROCEDURE [dbo].[pro_getAccount]
