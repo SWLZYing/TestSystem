@@ -10,14 +10,14 @@ namespace TestSystem.Persistent.Repository.Interface
         /// </summary>
         /// <param name="acc"></param>
         /// <returns></returns>
-        (Exception exception, bool isSuccess) Create(Account acc);
+        (Exception exception, Account result) Create(Account info);
 
         /// <summary>
         /// 帳號查詢
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        (Exception exception, Account account) Query(int id);
+        (Exception exception, Account result) Query(int id);
 
         /// <summary>
         /// 帳號更新
@@ -26,7 +26,7 @@ namespace TestSystem.Persistent.Repository.Interface
         /// <param name="pwd"></param>
         /// <param name="nickname"></param>
         /// <returns></returns>
-        (Exception exception, bool isSuccess) Update(Account acc);
+        (Exception exception, Account result) Update(Account acc);
 
         /// <summary>
         /// 重置密碼

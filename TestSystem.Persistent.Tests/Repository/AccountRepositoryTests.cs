@@ -37,7 +37,7 @@ namespace TestSystem.Persistent.Tests.Repository
 
         [TestMethod]
         public void set_account()
-        {           
+        {
             var result = repo.Create(new Account
             {
                 f_account = "USER002",
@@ -45,12 +45,14 @@ namespace TestSystem.Persistent.Tests.Repository
                 f_nickname = "User002",
             });
 
-            Assert.IsTrue(result.isSuccess);
+            Assert.IsNull(result.exception);
+            Assert.IsNotNull(result.result);
+            Console.WriteLine(result.result.ToString());
         }
 
         [TestMethod]
         public void set_account_exist()
-        {           
+        {
             var result = repo.Create(new Account
             {
                 f_account = "USER001",
@@ -58,7 +60,9 @@ namespace TestSystem.Persistent.Tests.Repository
                 f_nickname = "User001",
             });
 
-            Assert.IsFalse(result.isSuccess);
+            Assert.IsNull(result.result);
+            Assert.IsNotNull(result.exception);
+            Console.WriteLine(result.exception.Message);
         }
 
         [TestMethod]
@@ -67,8 +71,8 @@ namespace TestSystem.Persistent.Tests.Repository
             var result = repo.Query(1);
 
             Assert.IsNull(result.exception);
-            Assert.IsNotNull(result.account);
-            Console.WriteLine(result.account.ToString());
+            Assert.IsNotNull(result.result);
+            Console.WriteLine(result.result.ToString());
         }
 
         [TestMethod]
@@ -80,8 +84,10 @@ namespace TestSystem.Persistent.Tests.Repository
                 f_password = "ChangePWD001",
                 f_nickname = "ChangeUser001",
             });
-            
-            Assert.IsTrue(result.isSuccess);
+
+            Assert.IsNull(result.exception);
+            Assert.IsNotNull(result.result);
+            Console.WriteLine(result.result.ToString());
         }
 
         [TestMethod]
@@ -94,7 +100,9 @@ namespace TestSystem.Persistent.Tests.Repository
                 f_nickname = "ChangeUser001",
             });
 
-            Assert.IsTrue(result.isSuccess);
+            Assert.IsNull(result.exception);
+            Assert.IsNotNull(result.result);
+            Console.WriteLine(result.result.ToString());
         }
 
         [TestMethod]
@@ -107,7 +115,8 @@ namespace TestSystem.Persistent.Tests.Repository
                 f_nickname = "",
             });
 
-            Assert.IsFalse(result.isSuccess);
+            Assert.IsNull(result.result);
+            Assert.IsNull(result.exception);
         }
 
         [TestMethod]

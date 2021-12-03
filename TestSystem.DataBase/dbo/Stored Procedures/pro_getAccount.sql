@@ -9,7 +9,7 @@
 CREATE PROCEDURE [dbo].[pro_getAccount]
 @id INT
 AS
-	SELECT f_id, f_account, f_nickname, f_lastLoginTime, f_createTime, f_updateTime 
+	SELECT f_id, f_account, f_password, f_nickname, f_lastLoginTime, f_createTime, f_updateTime 
 	  FROM t_account WITH(NOLOCK)
 	 WHERE f_id = @id
 RETURN 0

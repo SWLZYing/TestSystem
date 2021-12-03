@@ -20,7 +20,7 @@ namespace TestSystem.Persistent.Model
 
         public override string ToString()
         {
-            return $"{nameof(f_account)}:{f_account},{nameof(f_nickname)}:{f_nickname},{nameof(f_lastLoginTime)}:{f_lastLoginTime}";
+            return $"{nameof(f_id)}:{f_id},{nameof(f_account)}:{f_account},{nameof(f_password)}:{f_password},{nameof(f_nickname)}:{f_nickname},{nameof(f_lastLoginTime)}:{f_lastLoginTime}";
         }
     }
 }

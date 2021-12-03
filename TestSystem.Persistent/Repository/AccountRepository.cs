@@ -16,42 +16,19 @@ namespace TestSystem.Persistent.Repository
             this.connectionString = connectionString;
         }
 
-        public (Exception exception, bool isSuccess) Create(Account acc)
-        {
-            try
-            {
-                using (var cn = new SqlConnection(connectionString))
-                {
-                    var reuslt = cn.Execute(
-                        "pro_setAccount",
-                        new
-                        {
-                            acc = acc.f_account,
-                            pwd = acc.f_password,
-                            nickname = acc.f_nickname,
-                        },
-                        commandType: CommandType.StoredProcedure);
-
-                    return (null, IsSuccess(reuslt));
-                }
-            }
-            catch (Exception ex)
-            {
-                return (ex, false);
-            }
-        }
-
-        public (Exception exception, Account account) Query(int id)
+        public (Exception exception, Account result) Create(Account info)
         {
             try
             {
                 using (var cn = new SqlConnection(connectionString))
                 {
                     var reuslt = cn.QueryFirstOrDefault<Account>(
-                        "pro_getAccount",
+                        "pro_setAccount",
                         new
                         {
-                            id = id,
+                            acc = info.f_account,
+                            pwd = info.f_password,
+                            nickname = info.f_nickname,
                         },
                         commandType: CommandType.StoredProcedure);
 
@@ -64,13 +41,36 @@ namespace TestSystem.Persistent.Repository
             }
         }
 
-        public (Exception exception, bool isSuccess) Update(Account acc)
+        public (Exception exception, Account result) Query(int id)
         {
             try
             {
                 using (var cn = new SqlConnection(connectionString))
                 {
-                    var reuslt = cn.Execute(
+                    var result = cn.QueryFirstOrDefault<Account>(
+                        "pro_getAccount",
+                        new
+                        {
+                            id = id,
+                        },
+                        commandType: CommandType.StoredProcedure);
+
+                    return (null, result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (ex, null);
+            }
+        }
+
+        public (Exception exception, Account result) Update(Account acc)
+        {
+            try
+            {
+                using (var cn = new SqlConnection(connectionString))
+                {
+                    var reuslt = cn.QueryFirstOrDefault<Account>(
                         "pro_updateAccount",
                         new
                         {
@@ -80,12 +80,12 @@ namespace TestSystem.Persistent.Repository
                         },
                         commandType: CommandType.StoredProcedure);
 
-                    return (null, IsSuccess(reuslt));
+                    return (null, reuslt);
                 }
             }
             catch (Exception ex)
             {
-                return (ex, false);
+                return (ex, null);
             }
         }
 

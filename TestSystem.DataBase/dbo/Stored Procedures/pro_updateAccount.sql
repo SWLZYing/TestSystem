@@ -13,10 +13,11 @@ CREATE PROCEDURE [dbo].[pro_updateAccount]
 @pwd NVARCHAR(50),
 @nickname NVARCHAR(20)
 AS
-	UPDATE t_account WITH(ROWLOCK)
-	   SET f_password = CASE WHEN @pwd = '' THEN f_password ELSE @pwd END
+	UPDATE t_account WITH(ROWLOCK)	
+	   SET f_password = CASE WHEN @pwd = '' THEN f_password ELSE SUBSTRING(sys.fn_sqlvarbasetostr(HASHBYTES('SHA2_256',@pwd)), 3, 32) END
 	     , f_nickname = @nickname
 		 , f_updateTime = GETDATE()
+	OUTPUT inserted.*
 	 WHERE f_id = @id
 RETURN 0
 GO

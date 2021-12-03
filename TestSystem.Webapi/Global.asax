@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="TestSystem.Webapi.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="TestSystem.WebApi.WebApiApplication" Language="C#" %>
