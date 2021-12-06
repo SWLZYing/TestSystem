@@ -93,5 +93,222 @@ namespace TestSystem.Persistent.Tests.Controller
             Assert.AreEqual("2222", response.Code);
             Console.WriteLine(response.Message);
         }
+
+        [TestMethod]
+        public void query_user_success()
+        {
+            _accRepo.Setup(s => s.Query(It.IsAny<int>()))
+                .Returns((null, new Account { f_id = 1 }));
+
+            var controller = new AccountController(_accRepo.Object, _accLvRepo.Object);
+
+            var response = controller.QueryUser(new QueryUserRequest
+            {
+                AccId = 1
+            });
+
+            Assert.AreEqual("0000", response.Code);
+            Console.WriteLine(response.Acc.ToString());
+        }
+
+        [TestMethod]
+        public void query_user_failed()
+        {
+            _accRepo.Setup(s => s.Query(It.IsAny<int>()))
+                .Returns((null, null));
+
+            var controller = new AccountController(_accRepo.Object, _accLvRepo.Object);
+
+            var response = controller.QueryUser(new QueryUserRequest
+            {
+                AccId = 3
+            });
+
+            Assert.AreEqual("3333", response.Code);
+            Console.WriteLine(response.Message);
+        }
+
+        [TestMethod]
+        public void query_user_system_error()
+        {
+            _accRepo.Setup(s => s.Query(It.IsAny<int>()))
+                .Returns((new Exception(), null));
+
+            var controller = new AccountController(_accRepo.Object, _accLvRepo.Object);
+
+            var response = controller.QueryUser(new QueryUserRequest
+            {
+                AccId = 1
+            });
+
+            Assert.AreEqual("9999", response.Code);
+            Console.WriteLine(response.Message);
+        }
+
+        [TestMethod]
+        public void update_user_success()
+        {
+            _accRepo.Setup(s => s.Update(It.IsAny<Account>()))
+                .Returns((null, new Account { f_id = 1 }));
+
+            var controller = new AccountController(_accRepo.Object, _accLvRepo.Object);
+
+            var response = controller.UpdateUser(new UpdateUserRequest
+            {
+                Id = 1
+            });
+
+            Assert.AreEqual("0000", response.Code);
+            Console.WriteLine(response.Acc.ToString());
+        }
+
+        [TestMethod]
+        public void update_user_failed()
+        {
+            _accRepo.Setup(s => s.Update(It.IsAny<Account>()))
+                .Returns((null, null));
+
+            var controller = new AccountController(_accRepo.Object, _accLvRepo.Object);
+
+            var response = controller.UpdateUser(new UpdateUserRequest
+            {
+                Id = 3
+            });
+
+            Assert.AreEqual("3333", response.Code);
+            Console.WriteLine(response.Message);
+        }
+
+        [TestMethod]
+        public void update_user_system_error()
+        {
+            _accRepo.Setup(s => s.Update(It.IsAny<Account>()))
+                .Returns((new Exception(), null));
+
+            var controller = new AccountController(_accRepo.Object, _accLvRepo.Object);
+
+            var response = controller.UpdateUser(new UpdateUserRequest
+            {
+                Id = 1
+            });
+
+            Assert.AreEqual("9999", response.Code);
+            Console.WriteLine(response.Message);
+        }
+
+        [TestMethod]
+        public void update_user_with_pwd_success()
+        {
+            _accRepo.Setup(s => s.Query(It.IsAny<int>()))
+                .Returns((null, new Account { f_password = "old" }));
+            _accRepo.Setup(s => s.Update(It.IsAny<Account>()))
+                .Returns((null, new Account { f_id = 1 }));
+
+            var controller = new AccountController(_accRepo.Object, _accLvRepo.Object);
+
+            var response = controller.UpdateUser(new UpdateUserRequest
+            {
+                Id = 1,
+                Pwd = "new",
+                OldPwd = "old",
+            });
+
+            Assert.AreEqual("0000", response.Code);
+            Console.WriteLine(response.Acc.ToString());
+        }
+
+        [TestMethod]
+        public void update_user_with_pwd_failed()
+        {
+            _accRepo.Setup(s => s.Query(It.IsAny<int>()))
+                .Returns((null, new Account { f_password = "old" }));
+
+            var controller = new AccountController(_accRepo.Object, _accLvRepo.Object);
+
+            var response = controller.UpdateUser(new UpdateUserRequest
+            {
+                Id = 1,
+                Pwd = "new",
+                OldPwd = "notOld",
+            });
+
+            Assert.AreEqual("4444", response.Code);
+            Console.WriteLine(response.Message);
+        }
+
+        [TestMethod]
+        public void reset_pwd_success()
+        {
+            _accRepo.Setup(s => s.Query(It.IsAny<int>()))
+                .Returns((null, new Account { f_password = "old" }));
+            _accRepo.Setup(s => s.Reset(It.IsAny<int>(), It.IsAny<string>()))
+                .Returns((null, true));
+
+            var controller = new AccountController(_accRepo.Object, _accLvRepo.Object);
+
+            var response = controller.ResetPwd(new ResetPwdRequest
+            {
+                Id = 1,
+                Pwd = "new",
+                OldPwd = "old",
+            });
+
+            Assert.AreEqual("0000", response.Code);
+            Assert.IsTrue(response.IsSuccess);
+        }
+
+        [TestMethod]
+        public void reset_pwd_is_null()
+        {
+            var controller = new AccountController(_accRepo.Object, _accLvRepo.Object);
+
+            var response = controller.ResetPwd(new ResetPwdRequest
+            {
+                Id = 1,
+                Pwd = string.Empty,
+                OldPwd = "old",
+            });
+
+            Assert.AreEqual("1111", response.Code);
+            Console.WriteLine(response.Message);
+        }
+
+        [TestMethod]
+        public void reset_pwd_old_pwd_is_different()
+        {
+            _accRepo.Setup(s => s.Query(It.IsAny<int>()))
+                .Returns((null, new Account { f_password = "old" }));
+
+            var controller = new AccountController(_accRepo.Object, _accLvRepo.Object);
+
+            var response = controller.ResetPwd(new ResetPwdRequest
+            {
+                Id = 1,
+                Pwd = "new",
+                OldPwd = "notOld",
+            });
+
+            Assert.AreEqual("4444", response.Code);
+            Console.WriteLine(response.Message);
+        }
+
+        [TestMethod]
+        public void reset_pwd_id_is_not_exist()
+        {
+            _accRepo.Setup(s => s.Query(It.IsAny<int>()))
+                .Returns((null, null));
+
+            var controller = new AccountController(_accRepo.Object, _accLvRepo.Object);
+
+            var response = controller.ResetPwd(new ResetPwdRequest
+            {
+                Id = 1,
+                Pwd = "new",
+                OldPwd = "old",
+            });
+
+            Assert.AreEqual("3333", response.Code);
+            Console.WriteLine(response.Message);
+        }
     }
 }

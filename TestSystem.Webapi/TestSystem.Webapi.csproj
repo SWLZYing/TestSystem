@@ -192,8 +192,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BasicResponse.cs" />
     <Compile Include="Models\CreateUserRequest.cs" />
     <Compile Include="Models\CreateUserResponse.cs" />
+    <Compile Include="Models\QueryUserRequest.cs" />
+    <Compile Include="Models\QueryUserResponse.cs" />
+    <Compile Include="Models\ResetPwdRequest.cs" />
+    <Compile Include="Models\ResetPwdResponse.cs" />
+    <Compile Include="Models\UpdateUserRequest.cs" />
+    <Compile Include="Models\UpdateUserResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -13,11 +13,9 @@ CREATE PROCEDURE [dbo].[pro_setAccount]
 @pwd NVARCHAR(50),
 @nickname NVARCHAR(20)
 AS
-	DECLARE @passwordSha2 CHAR(32) = SUBSTRING(sys.fn_sqlvarbasetostr(HASHBYTES('SHA2_256',@pwd)), 3, 32)
-
     INSERT INTO t_account(f_account, f_password, f_nickname, f_lastLoginTime, f_createTime, f_updateTime)
 	OUTPUT inserted.*
-	VALUES (@acc, @passwordSha2, @nickname, GETDATE(), GETDATE(), GETDATE())
+	VALUES (@acc, @pwd, @nickname, GETDATE(), GETDATE(), GETDATE())
 RETURN 0
 GO
 GRANT EXECUTE

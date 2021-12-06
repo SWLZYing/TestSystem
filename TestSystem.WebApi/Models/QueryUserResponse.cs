@@ -2,9 +2,8 @@
 
 namespace TestSystem.WebApi.Models
 {
-    public class CreateUserResponse : BasicResponse
+    public class QueryUserResponse : BasicResponse
     {
         public Account Acc { get; set; }
-        public AccountLevel AccLevel { get; set; }
     }
 }

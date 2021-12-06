@@ -11,10 +11,8 @@ CREATE PROCEDURE [dbo].[pro_resetAccount]
 @id INT,
 @pwd NVARCHAR(50)
 AS
-	DECLARE @passwordSha2 CHAR(32) = SUBSTRING(sys.fn_sqlvarbasetostr(HASHBYTES('SHA2_256',@pwd)), 3, 32)
-
 	UPDATE t_account WITH(ROWLOCK)
-	   SET f_password = @passwordSha2
+	   SET f_password = @pwd
 		 , f_updateTime = GETDATE()
 	 WHERE f_id = @id
 RETURN 0

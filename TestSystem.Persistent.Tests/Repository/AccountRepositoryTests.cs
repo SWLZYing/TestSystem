@@ -76,6 +76,15 @@ namespace TestSystem.Persistent.Tests.Repository
         }
 
         [TestMethod]
+        public void get_account_not_exist()
+        {
+            var result = repo.Query(3);
+
+            Assert.IsNull(result.exception);
+            Assert.IsNull(result.result);
+        }
+
+        [TestMethod]
         public void update_account_password()
         {
             var result = repo.Update(new Account
