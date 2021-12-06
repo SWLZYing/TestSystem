@@ -6,6 +6,7 @@ namespace TestSystem.WebApi.Models
     {
         public string Code { get; set; }
         public string Message { get; set; }
-        public Account Data { get; set; }
+        public Account Acc { get; set; }
+        public AccountLevel AccLevel { get; set; }
     }
 }

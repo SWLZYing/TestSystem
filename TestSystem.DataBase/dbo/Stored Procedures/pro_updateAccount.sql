@@ -3,9 +3,13 @@
 	建立日期: 2021-12-02
 
 	有變更密碼：exec pro_updateAccount 
-					@id = 1, @pwd = '123456789', @nickname = 'testUser001'
+					@id = 1, 
+					@pwd = '123456789', 
+					@nickname = 'testUser001'
 	無變更密碼：exec pro_updateAccount 
-					@id = 1, @pwd = '', @nickname = 'testUser001'
+					@id = 1, 
+					@pwd = '', 
+					@nickname = 'testUser001'
 */
 
 CREATE PROCEDURE [dbo].[pro_updateAccount]

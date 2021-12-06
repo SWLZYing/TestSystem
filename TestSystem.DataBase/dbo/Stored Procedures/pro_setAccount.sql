@@ -3,7 +3,9 @@
 	建立日期: 2021-12-02
 
 	exec pro_setAccount 
-		@acc = 'USER002', @pwd = 'PWD002', @nickname = 'User002'
+		@acc = 'USER002', 
+		@pwd = 'PWD002', 
+		@nickname = 'User002'
 */
 
 CREATE PROCEDURE [dbo].[pro_setAccount]

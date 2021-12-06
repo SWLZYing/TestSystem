@@ -3,7 +3,8 @@
 	建立日期: 2021-12-03
 
 	exec pro_signIn 
-		@acc = 'USER001', @pwd = 'PWD001'
+		@acc = 'USER001', 
+		@pwd = 'PWD001'
 */
 
 CREATE PROCEDURE [dbo].[pro_signIn]

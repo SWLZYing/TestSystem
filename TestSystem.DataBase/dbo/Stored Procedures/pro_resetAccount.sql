@@ -3,7 +3,8 @@
 	建立日期: 2021-12-02
 
 	exec pro_resetAccount 
-		@id = 1, @pwd = 'ResetPWD001'
+		@id = 1, 
+		@pwd = 'ResetPWD001'
 */
 
 CREATE PROCEDURE [dbo].[pro_resetAccount]
