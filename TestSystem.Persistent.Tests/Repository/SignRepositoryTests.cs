@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestSystem.Persistent.Repository;
 using TestSystem.Persistent.Repository.Interface;
 
-namespace TestSystem.Persistent.Tests.Repository
+namespace TestSystem.Tests.Repository
 {
     [TestClass]
     public class SignRepositoryTests

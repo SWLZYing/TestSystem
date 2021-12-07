@@ -6,7 +6,7 @@ using TestSystem.Persistent.Repository.Interface;
 using TestSystem.WebApi.Controllers;
 using TestSystem.WebApi.Models;
 
-namespace TestSystem.Persistent.Tests.Controller
+namespace TestSystem.Tests.Controller
 {
     [TestClass]
     public class AccountControllerTests

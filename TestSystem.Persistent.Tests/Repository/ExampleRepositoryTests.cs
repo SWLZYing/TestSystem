@@ -1,5 +1,4 @@
-﻿
-namespace TestSystem.Persistent.Tests.Repository
+﻿namespace TestSystem.Tests.Repository
 {
     using System.Data.SqlClient;
     using Dapper;
@@ -24,13 +23,13 @@ namespace TestSystem.Persistent.Tests.Repository
                 cn.Execute(sqlStr);
             }
 
-            this.repo = new ExampleRepository(connectionString);
+            repo = new ExampleRepository(connectionString);
         }
 
         [TestMethod]
         public void 取資料測試()
         {
-            var queryResult = this.repo.Query();
+            var queryResult = repo.Query();
 
             Assert.IsNull(queryResult.exception);
             Assert.IsNotNull(queryResult.examples);

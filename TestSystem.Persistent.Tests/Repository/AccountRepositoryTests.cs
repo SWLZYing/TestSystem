@@ -6,7 +6,7 @@ using TestSystem.Persistent.Model;
 using TestSystem.Persistent.Repository;
 using TestSystem.Persistent.Repository.Interface;
 
-namespace TestSystem.Persistent.Tests.Repository
+namespace TestSystem.Tests.Repository
 {
     [TestClass]
     public class AccountRepositoryTests

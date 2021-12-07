@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using TestSystem.Persistent.Repository;
 using TestSystem.Persistent.Repository.Interface;
 
-namespace TestSystem.Persistent.Tests.Repository
+namespace TestSystem.Tests.Repository
 {
     [TestClass]
     public class AccountLevelRepositoryTests

@@ -7,7 +7,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TestSystem.DataBase", "Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSystem.Persistent", "TestSystem.Persistent\TestSystem.Persistent.csproj", "{182FE060-CFFA-4AA1-9526-89A2A538B9A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSystem.Persistent.Tests", "TestSystem.Persistent.Tests\TestSystem.Persistent.Tests.csproj", "{83BF3071-7CE8-4FE4-883C-F957499C1E3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSystem.Tests", "TestSystem.Persistent.Tests\TestSystem.Tests.csproj", "{83BF3071-7CE8-4FE4-883C-F957499C1E3A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSystem.WebApi", "TestSystem.WebApi\TestSystem.WebApi.csproj", "{6ADBB919-F55D-46DF-A8FE-A6EC7F952031}"
 EndProject
