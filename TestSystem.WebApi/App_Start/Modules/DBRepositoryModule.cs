@@ -13,6 +13,7 @@ namespace TestSystem.WebApi.App_Start.Modules
 
             builder.Register(c => new AccountRepository(connectionString)).As<IAccountRepository>();
             builder.Register(c => new AccountLevelRepository(connectionString)).As<IAccountLevelRepository>();
+            builder.Register(c => new SignRepository(connectionString)).As<ISignRepository>();
         }
     }
 }

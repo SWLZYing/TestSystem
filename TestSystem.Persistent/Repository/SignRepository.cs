@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using TestSystem.Persistent.Model;
 using TestSystem.Persistent.Repository.Interface;
 
 namespace TestSystem.Persistent.Repository
@@ -15,13 +16,13 @@ namespace TestSystem.Persistent.Repository
             this.connectionString = connectionString;
         }
 
-        public (Exception exception, bool isSuccess) SignIn(string acc, string pwd)
+        public (Exception exception, (int, Account) result) SignIn(string acc, string pwd)
         {
             try
             {
                 using (var cn = new SqlConnection(connectionString))
                 {
-                    var result = cn.Execute(
+                    var result = cn.QueryMultiple(
                         "pro_signIn",
                         new
                         {
@@ -30,16 +31,27 @@ namespace TestSystem.Persistent.Repository
                         },
                         commandType: CommandType.StoredProcedure);
 
-                    return (null, IsSuccess(result));
+                    var readStatus = result.ReadFirstOrDefault<int>();
+
+                    // 登入失敗 只回傳狀態碼
+                    if (readStatus != 1)
+                    {
+                        return (null, (readStatus, null));
+                    }
+
+                    // 登入成功 回傳使用者資訊
+                    var readAcc = result.ReadFirstOrDefault<Account>();
+
+                    return (null, (readStatus, readAcc));
                 }
             }
             catch (Exception ex)
             {
-                return (ex, false);
+                return (ex, (0, null));
             }
         }
 
-        public (Exception exception, bool isSuccess) SignOut()
+        public (Exception exception, bool isSuccess) SignOut(int accId)
         {
             try
             {
@@ -50,11 +62,6 @@ namespace TestSystem.Persistent.Repository
             {
                 return (ex, false);
             }
-        }
-
-        private bool IsSuccess(int result)
-        {
-            return result > 0;
         }
     }
 }

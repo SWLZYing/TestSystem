@@ -4,6 +4,7 @@ using System;
 using TestSystem.Persistent.Model;
 using TestSystem.Persistent.Repository.Interface;
 using TestSystem.WebApi.Controllers;
+using TestSystem.WebApi.Enums;
 using TestSystem.WebApi.Models;
 
 namespace TestSystem.Tests.Controller
@@ -33,7 +34,7 @@ namespace TestSystem.Tests.Controller
                 Nickname = "test",
             });
 
-            Assert.AreEqual("1111", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.FieldsMiss, response.Code);
             Console.WriteLine(response.Message);
         }
 
@@ -49,7 +50,7 @@ namespace TestSystem.Tests.Controller
                 Nickname = "test",
             });
 
-            Assert.AreEqual("1111", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.FieldsMiss, response.Code);
             Console.WriteLine(response.Message);
         }
 
@@ -71,7 +72,7 @@ namespace TestSystem.Tests.Controller
                 Nickname = "test",
             });
 
-            Assert.AreEqual("0000", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.Success, response.Code);
             Console.WriteLine($"Acc:{response.Acc}, AccLevel:{response.AccLevel}");
         }
 
@@ -90,7 +91,7 @@ namespace TestSystem.Tests.Controller
                 Nickname = "test",
             });
 
-            Assert.AreEqual("2222", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.DBError, response.Code);
             Console.WriteLine(response.Message);
         }
 
@@ -107,7 +108,7 @@ namespace TestSystem.Tests.Controller
                 AccId = 1
             });
 
-            Assert.AreEqual("0000", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.Success, response.Code);
             Console.WriteLine(response.Acc.ToString());
         }
 
@@ -124,7 +125,7 @@ namespace TestSystem.Tests.Controller
                 AccId = 3
             });
 
-            Assert.AreEqual("3333", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.NotFound, response.Code);
             Console.WriteLine(response.Message);
         }
 
@@ -141,7 +142,7 @@ namespace TestSystem.Tests.Controller
                 AccId = 1
             });
 
-            Assert.AreEqual("9999", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.SystemError, response.Code);
             Console.WriteLine(response.Message);
         }
 
@@ -158,7 +159,7 @@ namespace TestSystem.Tests.Controller
                 Id = 1
             });
 
-            Assert.AreEqual("0000", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.Success, response.Code);
             Console.WriteLine(response.Acc.ToString());
         }
 
@@ -175,7 +176,7 @@ namespace TestSystem.Tests.Controller
                 Id = 3
             });
 
-            Assert.AreEqual("3333", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.NotFound, response.Code);
             Console.WriteLine(response.Message);
         }
 
@@ -192,7 +193,7 @@ namespace TestSystem.Tests.Controller
                 Id = 1
             });
 
-            Assert.AreEqual("9999", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.SystemError, response.Code);
             Console.WriteLine(response.Message);
         }
 
@@ -213,7 +214,7 @@ namespace TestSystem.Tests.Controller
                 OldPwd = "old",
             });
 
-            Assert.AreEqual("0000", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.Success, response.Code);
             Console.WriteLine(response.Acc.ToString());
         }
 
@@ -232,7 +233,7 @@ namespace TestSystem.Tests.Controller
                 OldPwd = "notOld",
             });
 
-            Assert.AreEqual("4444", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.PwdError, response.Code);
             Console.WriteLine(response.Message);
         }
 
@@ -253,7 +254,7 @@ namespace TestSystem.Tests.Controller
                 OldPwd = "old",
             });
 
-            Assert.AreEqual("0000", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.Success, response.Code);
             Assert.IsTrue(response.IsSuccess);
         }
 
@@ -269,7 +270,7 @@ namespace TestSystem.Tests.Controller
                 OldPwd = "old",
             });
 
-            Assert.AreEqual("1111", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.FieldsMiss, response.Code);
             Console.WriteLine(response.Message);
         }
 
@@ -288,7 +289,7 @@ namespace TestSystem.Tests.Controller
                 OldPwd = "notOld",
             });
 
-            Assert.AreEqual("4444", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.PwdError, response.Code);
             Console.WriteLine(response.Message);
         }
 
@@ -307,7 +308,7 @@ namespace TestSystem.Tests.Controller
                 OldPwd = "old",
             });
 
-            Assert.AreEqual("3333", response.Code);
+            Assert.AreEqual((int)ErrorCodeType.NotFound, response.Code);
             Console.WriteLine(response.Message);
         }
     }

@@ -160,6 +160,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SignController.cs" />
+    <Compile Include="Enums\ErrorCodeType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -170,6 +172,10 @@
     <Compile Include="Models\QueryUserResponse.cs" />
     <Compile Include="Models\ResetPwdRequest.cs" />
     <Compile Include="Models\ResetPwdResponse.cs" />
+    <Compile Include="Models\SignInRequest.cs" />
+    <Compile Include="Models\SignInResponse.cs" />
+    <Compile Include="Models\SignOutRequest.cs" />
+    <Compile Include="Models\SignOutResponse.cs" />
     <Compile Include="Models\UpdateUserRequest.cs" />
     <Compile Include="Models\UpdateUserResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -39,22 +39,35 @@ namespace TestSystem.Tests.Repository
         {
             var result = repo.SignIn("USER001", "PWD001");
 
-            Assert.IsTrue(result.isSuccess);
+            Assert.IsNull(result.exception);
+            Assert.AreEqual(1, result.result.Item1);
+            System.Console.WriteLine($"{result.result.Item1}, {result.result.Item2}");
         }
 
         [TestMethod]
-        public void sign_in_failed()
+        public void sign_in_failed_for_acc()
         {
-            var result = repo.SignIn("USER001", "PWD00");
+            var result = repo.SignIn("errorAcc", "PWD001");
 
-            Assert.IsFalse(result.isSuccess);
+            Assert.IsNull(result.exception);
+            Assert.AreEqual(0, result.result.Item1);
+        }
+
+        [TestMethod]
+        public void sign_in_failed_for_pwd()
+        {
+            var result = repo.SignIn("USER001", "errorPwd");
+
+            Assert.IsNull(result.exception);
+            Assert.AreEqual(2, result.result.Item1);
         }
 
         [TestMethod]
         public void sign_out()
         {
-            var result = repo.SignOut();
+            var result = repo.SignOut(1);
 
+            Assert.IsNull(result.exception);
             Assert.IsTrue(result.isSuccess);
         }
     }
