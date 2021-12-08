@@ -57,7 +57,7 @@ namespace TestSystem.Client
 
         private static void SignOut()
         {
-            Console.WriteLine("6: 帳號登出");
+            Console.WriteLine("帳號登出");
             Console.WriteLine("輸入帳號ID:");
             var id = Console.ReadLine();
 
@@ -76,7 +76,7 @@ namespace TestSystem.Client
             var id = Console.ReadLine();
             Console.WriteLine("輸入原密碼:");
             var oldPwd = Console.ReadLine();
-            Console.WriteLine("輸入密碼:");
+            Console.WriteLine("輸入新密碼:");
             var pwd = Console.ReadLine();
 
             var response = CallApi("Account/ResetPwd", new Dictionary<string, object>
@@ -94,9 +94,9 @@ namespace TestSystem.Client
             Console.WriteLine("資料修改");
             Console.WriteLine("輸入帳號ID:");
             var id = Console.ReadLine();
-            Console.WriteLine("輸入原密碼:");
+            Console.WriteLine("輸入原密碼(不修改跳過):");
             var oldPwd = Console.ReadLine();
-            Console.WriteLine("輸入密碼:");
+            Console.WriteLine("輸入新密碼(不修改跳過):");
             var pwd = Console.ReadLine();
             Console.WriteLine("輸入暱稱:");
             var nickname = Console.ReadLine();
@@ -165,24 +165,32 @@ namespace TestSystem.Client
 
         private static string CallApi(string action, Dictionary<string, object> parameters)
         {
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("http://localhost:53172/Api/");
-
-                var request = new HttpRequestMessage(HttpMethod.Post, action);
-
-                request.Content = new StringContent(JsonSerializer.Serialize<object>(parameters), Encoding.UTF8, "application/json");
-
-                var response = client.SendAsync(request).Result;
-
-                if (response.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    //取回傳值
-                    return response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                }
-            }
+                    client.BaseAddress = new Uri("http://localhost:53172/Api/");
 
-            return string.Empty;
+                    var request = new HttpRequestMessage(HttpMethod.Post, action)
+                    {
+                        Content = new StringContent(JsonSerializer.Serialize<object>(parameters), Encoding.UTF8, "application/json")
+                    };
+
+                    var response = client.SendAsync(request).GetAwaiter().GetResult();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        //取回傳值
+                        return response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    }
+                }
+
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
         private static void HomeMsg()
@@ -195,7 +203,7 @@ namespace TestSystem.Client
             Console.WriteLine("5: 密碼修改");
             Console.WriteLine("6: 帳號登出");
             Console.WriteLine("7: 離開");
-            Console.WriteLine("請輸入編號: ");
+            Console.WriteLine("請輸入編號:");
         }
     }
 }
